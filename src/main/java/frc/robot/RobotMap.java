@@ -36,7 +36,11 @@ public class RobotMap {
   public static final int DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR = 5; // CAN
 
   public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 8; // CAN
-  public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 3; // Analog
+  public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 2; // Analog
   public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 7;
+
+  public static final int SHOOTER = 10;
+
+
 
 }
