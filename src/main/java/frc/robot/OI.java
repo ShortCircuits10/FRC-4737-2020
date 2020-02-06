@@ -8,9 +8,11 @@
 package frc.robot;
 
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.commands.SwerveDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.libs.XboxController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -45,8 +47,10 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
   private final Joystick primaryJoystick = new Joystick(0);
+  public XboxController driver;
 
     public OI() {
+      //  driver = new XboxController(0);
         // Back button zeroes the drivetrain
         new JoystickButton(primaryJoystick, 7).whenPressed(
                 new InstantCommand(() -> Drivetrain.getInstance().resetGyroscope())
