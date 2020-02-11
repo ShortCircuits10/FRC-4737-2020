@@ -8,13 +8,26 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 import frc.robot.commands.Shooter;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.*;
+
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 /**
  * Add your docs here.
  */
 public class ShooterSub extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+
+  public WPI_TalonSRX Shooter;
+
+  public ShooterSub() {
+
+    Shooter = new WPI_TalonSRX(RobotMap.SHOOTER);
+  }
 
 
 

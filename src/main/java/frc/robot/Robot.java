@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.SwerveDrive;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.ShooterSub;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +26,7 @@ import frc.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
   
   public static Drivetrain drivetrain;
+  public static ShooterSub SHOOTERSUB = new ShooterSub();
   
   public static OI oi;
 
