@@ -41,6 +41,8 @@ public class RobotMap {
 
   public static final int SHOOTER = 10;
 
+  public static int SINGLESOLENOID_FORWARDCHANNEL = 4;
+  public static int SINGLESOLENOID_REVERSECHANNEL = 5;
 
 
 }

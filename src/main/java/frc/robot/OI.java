@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.libs.XboxController;
 import frc.robot.commands.Shooter;
+import frc.robot.commands.ColorWheel;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -57,6 +58,8 @@ public class OI {
 
         operator.B.whenPressed(new Shooter());
         operator.X.whenPressed(new Shooter());
+        operator.A.whenPressed(new ColorWheel(true));
+        operator.Y.whenPressed(new ColorWheel(false));
         // Back button zeroes the drivetrain
         new JoystickButton(primaryJoystick, 7).whenPressed(
                 new InstantCommand(() -> Drivetrain.getInstance().resetGyroscope())

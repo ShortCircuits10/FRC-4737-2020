@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.SwerveDrive;
+import frc.robot.subsystems.ColorSub;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ShooterSub;
 
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   
   public static Drivetrain drivetrain;
   public static ShooterSub SHOOTERSUB = new ShooterSub();
+  public static ColorSub COLORSUB;
   
   public static OI oi;
 
