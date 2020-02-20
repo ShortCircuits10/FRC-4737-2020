@@ -1,7 +1,5 @@
 package frc.libs;
 
-import edu.wpi.first.wpilibj.Joystick;
-
 public class XboxController extends Gamepad {
 
 	public final GamepadButton A;
@@ -23,7 +21,7 @@ public class XboxController extends Gamepad {
 
 	public final DPad DPAD;
 
-	public XboxController(Joystick primaryJoystick, int usbPort) {
+	public XboxController(int usbPort) {
 		super(usbPort, "XboxController");
 		A = new GamepadButton(this, "A", 1);
 		B = new GamepadButton(this, "B", 2);

@@ -11,8 +11,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.OI;
+import frc.robot.subsystems.DrivetrainSub;
+//import frc.robot.OI;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
 //import edu.wpi.first.wpilibj.GenericHID;
 //import edu.wpi.first.wpilibj.drive.Vector2d;
@@ -30,7 +30,7 @@ import org.frcteam2910.common.robot.Utilities;
 public class SwerveDrive extends Command {
   public SwerveDrive() {
     // Use requires() here to declare subsystem dependencies
-    requires(Drivetrain.getInstance());
+    requires(DrivetrainSub.getInstance());
   }
 
   // Called just before this Command runs the first time
@@ -56,7 +56,7 @@ public class SwerveDrive extends Command {
     // Square the rotation stick
     rotation = Math.copySign(Math.pow(rotation, 2.0), rotation);
 
-    Drivetrain.getInstance().drive(new Translation2d(forward, strafe), rotation, true);
+    DrivetrainSub.getInstance().drive(new Translation2d(forward, strafe), rotation, true);
 
   }
   	
