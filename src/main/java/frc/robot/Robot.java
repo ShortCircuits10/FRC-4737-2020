@@ -13,7 +13,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.SwerveDrive;
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.DrivetrainSub;
+import frc.robot.subsystems.IntakeSub;
+import frc.robot.subsystems.ShooterSub;
+import frc.robot.subsystems.ColorWheelSub;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,7 +27,18 @@ import frc.robot.subsystems.Drivetrain;
  */
 public class Robot extends TimedRobot {
   
-  public static Drivetrain drivetrain;
+  public static DrivetrainSub DRIVETRAINSUB;
+  public static ShooterSub SHOOTERSUB;
+  public static IntakeSub INTAKESUB;
+  public static ColorWheelSub COLORWHEELSUB;
+  
+  
+  private static Robot instance = null;
+  
+  public static Robot getInstance() {
+    return instance;
+  }
+  //public static 
   
   public static OI oi;
 
@@ -38,10 +52,14 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
+  public Robot() {
+    instance = this;
+  }
+
   @Override
   public void robotInit() {
     oi = new OI();
-    drivetrain = Drivetrain.getInstance();
+    DRIVETRAINSUB = DrivetrainSub.getInstance();
     m_chooser.setDefaultOption("Default Auto", new SwerveDrive());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -134,4 +152,5 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
 }

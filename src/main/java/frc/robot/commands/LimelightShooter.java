@@ -8,21 +8,29 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.ShooterSub;
+import frc.robot.subsystems.DrivetrainSub;
+import frc.robot.subsystems.LimeSub;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import frc.robot.Robot;
+import edu.wpi.first.wpilibj.geometry.Translation2d;
 
-public class Limelight extends Command {
-  public Limelight() {
+public class LimelightShooter extends Command {
+  
+  public LimelightShooter() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(ShooterSub.getInstance());
+    requires(DrivetrainSub.getInstance());
+    requires(LimeSub.getInstance());
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -32,16 +40,31 @@ public class Limelight extends Command {
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");
     NetworkTableEntry ta = table.getEntry("ta");
+    NetworkTableEntry tv = table.getEntry("tv");
 
-//read values periodically
+    //read values periodically
+    double rotation = 0;
     double x = tx.getDouble(0.0);
     double y = ty.getDouble(0.0);
     double area = ta.getDouble(0.0);
-
-//post to smart dashboard periodically
+    double target = tv.getDouble(0.0);
+    double targetArea = 0.5; //play
+    double distance = area/targetArea;
+    double xGive = 0.05;  //play
+    //post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", x);
     SmartDashboard.putNumber("LimelightY", y);
     SmartDashboard.putNumber("LimelightArea", area);
+                    //play
+    if (target == 1.0 && x <= xGive) {
+      Robot.SHOOTERSUB.setSpeed(0.1*distance);
+    } else if (target == 1.0) {
+      rotation = x*0.5; //play
+      DrivetrainSub.getInstance().drive(new Translation2d(0, 0), rotation, true);
+    } else {
+      rotation = 0.3; //play
+      DrivetrainSub.getInstance().drive(new Translation2d(0,0), rotation, true);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
