@@ -7,42 +7,39 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 //import frc.robot.subsystems.ColorWheelSub;
 
-public class ColorWheel extends Command {
-  public ColorWheel() {
+/**
+ * Add your docs here.
+ */
+public class ColorWheelPneumatics extends InstantCommand {
+  /**
+   * Add your docs here.
+   */
+  private boolean extended;
+
+  public ColorWheelPneumatics(boolean extended) {
+    super();
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.COLORWHEELSUB);
+    
+    this.extended = extended;
   }
 
-  // Called just before this Command runs the first time
+  // Called once when the command executes
   @Override
   protected void initialize() {
+
+    if (extended) {
+      Robot.COLORWHEELSUB.extendExtender();
+    } else {
+      Robot.COLORWHEELSUB.retractExtender();
+    
   }
 
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
-    Robot.COLORWHEELSUB.setSpeed(0.5);
+
   }
 
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    return false;
-  }
-
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {
-  }
-
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
 }

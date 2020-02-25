@@ -40,9 +40,11 @@ public class RobotMap {
   public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 7;
 
   public static final int SHOOTER = 10;
+  public static final int INTAKE_MOTOR1 = 11;
+  public static final int INTAKE_MOTOR2 = 12;
+  public static final int INTAKE_MOTOR3 = 13;
 
+  public static final int COLOR_WHEEL_MOTOR = 14;
   public static int SINGLESOLENOID_FORWARDCHANNEL = 4;
   public static int SINGLESOLENOID_REVERSECHANNEL = 5;
-
-
 }

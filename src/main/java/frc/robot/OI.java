@@ -7,13 +7,21 @@
 
 package frc.robot;
 
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.DrivetrainSub;
+//import frc.robot.subsystems.IntakeSub;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.libs.XboxController;
 import frc.robot.commands.Shooter;
-import frc.robot.commands.ColorWheel;
+import frc.robot.commands.Intake;
+import frc.robot.commands.IntakeBelt;
+import frc.robot.commands.BallElevator;
+import frc.robot.commands.ColorWheelPneumatics;
+//import frc.robot.commands.ColorWheel;
+//import frc.robot.commands.DisableColorWheel;
+import frc.robot.Robot;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -50,21 +58,66 @@ public class OI {
   private final Joystick primaryJoystick = new Joystick(0);
   public XboxController driver;
   public XboxController operator;
-
+  public boolean ColorWheelStatus = false;
+  public boolean ColorWheelPneumaticsStatus = false;
     public OI() {
         driver = new XboxController(0);
         operator = new XboxController(2);
 
+    operator.B.whileHeld(new Shooter());
+    operator.A.whenPressed(new ColorWheelPneumatics(true));
+    operator.Y.whenPressed(new ColorWheelPneumatics(false));
+    
+    /*  
+    if (ColorWheelPneumaticsStatus == false) {
+        operator.A.whenPressed(new ColorWheelPneumatics(true));
+    }  else if (ColorWheelPneumaticsStatus == true) {
+        operator.A.whenPressed(new ColorWheelPneumatics(false));
+    }
+*/
+  /*  if (ColorWheelStatus == false) {
+        operator.X.toggleWhenPressed(new ColorWheel());
+        ColorWheelStatus = true;
+    }  else if (ColorWheelStatus == true) {
+        operator.X.toggleWhenPressed(new DisableColorWheel());
+        ColorWheelStatus = false;
+    }
+*/
+        new Trigger() {
+            public boolean get() {
+              if (Robot.getInstance() == null)
+                return false;
+              return (operator.RT.get() != 0 || operator.LT.get() != 0);
+            }
+          }.whileActive(new Intake());
 
-        operator.B.whenPressed(new Shooter());
-        operator.X.whenPressed(new Shooter());
-        operator.A.whenPressed(new ColorWheel(true));
-        operator.Y.whenPressed(new ColorWheel(false));
+        new Trigger() {
+            public boolean get() {
+              if (Robot.getInstance() == null)
+                return false;
+              return (operator.LS.Y.get() != 0);
+            }
+          }.whileActive(new IntakeBelt());
+
+        new Trigger() {
+            public boolean get() {
+              if (Robot.getInstance() == null)
+                return false;
+              return (operator.RS.Y.get() != 0);
+            }
+          }.whileActive(new BallElevator());
+
+
         // Back button zeroes the drivetrain
         new JoystickButton(primaryJoystick, 7).whenPressed(
-                new InstantCommand(() -> Drivetrain.getInstance().resetGyroscope())
+                new InstantCommand(() -> DrivetrainSub.getInstance().resetGyroscope())
         );
     }
+
+
+
+
+
 
     public Joystick getPrimaryJoystick() {
         return primaryJoystick;

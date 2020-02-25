@@ -8,14 +8,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+//import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.subsystems.ShooterSub;
+import frc.robot.subsystems.IntakeSub;
 
-public class Shooter extends Command {
-  public Shooter() {
+public class Intake extends Command {
+  public Intake() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(ShooterSub.getInstance());
+   requires(IntakeSub.getInstance());
   }
 
   // Called just before this Command runs the first time
@@ -26,7 +26,8 @@ public class Shooter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.SHOOTERSUB.setSpeed(2);
+    double output = Robot.oi.operator.LT.get() - Robot.oi.operator.RT.get();
+    Robot.INTAKESUB.setIntakeSpeed(output);
   }
 
   // Make this return true when this Command no longer needs to run execute()

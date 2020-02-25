@@ -9,11 +9,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+//import frc.robot.subsystems.ColorWheelSub;
 
 public class DisableColorWheel extends Command {
   public DisableColorWheel() {
     // Use requires() here to declare subsystem dependencies
-     requires(Robot.COLORSUB);
+    // eg. requires(chassis);
+    requires(Robot.COLORWHEELSUB);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +26,7 @@ public class DisableColorWheel extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.COLORSUB.disablePneumatics();
+    Robot.COLORWHEELSUB.setSpeed(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
