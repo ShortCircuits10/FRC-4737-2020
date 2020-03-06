@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 import frc.robot.subsystems.IntakeSub;
 
 public class DisableIntake extends Command {
@@ -25,9 +24,9 @@ public class DisableIntake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.INTAKESUB.setIntakeSpeed(0);
-    Robot.INTAKESUB.setBallElevatorSpeed(0);
-    Robot.INTAKESUB.setIntakeBeltSpeed(0);
+    IntakeSub.getInstance().setIntakeSpeed(0);
+    IntakeSub.getInstance().setBallElevatorSpeed(0);
+    IntakeSub.getInstance().setIntakeBeltSpeed(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -8,14 +8,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-//import frc.robot.OI;
-import frc.robot.Robot;
 import frc.robot.subsystems.IntakeSub;
 
-public class Intake extends Command {
-  public Intake() {
+public class ReverseIntakeBelt extends Command {
+  public ReverseIntakeBelt() {
     // Use requires() here to declare subsystem dependencies
-   requires(IntakeSub.getInstance());
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -26,8 +24,9 @@ public class Intake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double output = Robot.oi.operator.LT.get() - Robot.oi.operator.RT.get();
-    IntakeSub.getInstance().setIntakeSpeed(output);
+    IntakeSub.getInstance().setIntakeBeltSpeed(-1);
+    IntakeSub.getInstance().setBallElevatorSpeed(-1);
+    IntakeSub.getInstance().setIntakeSpeed(-1);
   }
 
   // Make this return true when this Command no longer needs to run execute()

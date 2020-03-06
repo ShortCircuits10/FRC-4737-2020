@@ -26,7 +26,7 @@ public class BallElevator extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.INTAKESUB.setBallElevatorSpeed(Robot.oi.operator.RS.Y.get());
+    IntakeSub.getInstance().setBallElevatorSpeed(-Robot.oi.operator.RS.Y.get());
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.DisableColorWheel;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 //import edu.wpi.first.wpilibj.Solenoid;
@@ -18,30 +17,31 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 /**
  * Add your docs here.
  */
+
 public class ColorWheelSub extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private static ColorWheelSub instance;
   public WPI_TalonSRX ColorWheel;
-  private DoubleSolenoid Colorsolenoid;
+  public DoubleSolenoid ColorSolenoid;
   //private Solenoid Colorsolenoid;
   public ColorWheelSub() {
 
     ColorWheel = new WPI_TalonSRX(RobotMap.COLOR_WHEEL_MOTOR);
-    //Colorsolenoid = new Solenoid(RobotMap.SINGLESOLENOID_FORWARDCHANNEL, RobotMap.SINGLESOLENOID_REVERSECHANNEL);
-    Colorsolenoid = new DoubleSolenoid(RobotMap.SINGLESOLENOID_FORWARDCHANNEL, RobotMap.SINGLESOLENOID_REVERSECHANNEL);
+    //ColorSolenoid = new Solenoid(RobotMap.COLORWHEEL_SINGLESOLENOID_FORWARDCHANNEL, RobotMap.COLORWHEEL_SINGLESOLENOID_REVERSECHANNEL);
+    ColorSolenoid = new DoubleSolenoid(RobotMap.COLORWHEEL_SINGLESOLENOID_FORWARDCHANNEL, RobotMap.COLORWHEEL_SINGLESOLENOID_REVERSECHANNEL);
   }
  
   public void extendExtender() {
-    Colorsolenoid.set(Value.kForward);
+    ColorSolenoid.set(Value.kForward);
   }
 
   public void retractExtender() {
-    Colorsolenoid.set(Value.kReverse);
+    ColorSolenoid.set(Value.kReverse);
   }
 
   public void disablePneumatics() {
-    Colorsolenoid.set(Value.kOff);
+    ColorSolenoid.set(Value.kOff);
   }
 
   public static ColorWheelSub getInstance() {
@@ -59,7 +59,6 @@ public class ColorWheelSub extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-     setDefaultCommand(new DisableColorWheel());
+    //setDefaultCommand(new Di);
   }
 }

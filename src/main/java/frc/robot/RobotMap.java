@@ -23,28 +23,36 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-  public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR = 2; // CAN
+  public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR = 4; // CAN
   public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER = 0; // Analog
-  public static final int DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR = 1; // CAN
+  public static final int DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR = 3; // CAN
 
-  public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR = 4; // CAN
+  public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR = 2; // CAN
   public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER = 1; // Analog
-  public static final int DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR = 3; // CAN
+  public static final int DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR = 1; // CAN
 
-  public static final int DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR = 6; // CAN
+  public static final int DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR = 8; // CAN
   public static final int DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER = 2; // Analog
-  public static final int DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR = 5; // CAN
+  public static final int DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR = 7; // CAN
 
-  public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 8; // CAN
-  public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 2; // Analog
-  public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 7;
+  public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 6; // CAN
+  public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 3; // Analog
+  public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 5;
 
-  public static final int SHOOTER = 10;
-  public static final int INTAKE_MOTOR1 = 11;
+  public static final int SHOOTER_MOT0R1 = 15;
+  public static final int SHOOTER_MOT0R2 = 9;
+  public static final int INTAKE_MOTOR1 = 14;
   public static final int INTAKE_MOTOR2 = 12;
-  public static final int INTAKE_MOTOR3 = 13;
+  public static final int INTAKE_MOTOR3 = 23;
 
   public static final int COLOR_WHEEL_MOTOR = 14;
-  public static int SINGLESOLENOID_FORWARDCHANNEL = 4;
-  public static int SINGLESOLENOID_REVERSECHANNEL = 5;
+  public static int COLORWHEEL_SINGLESOLENOID_FORWARDCHANNEL = 4;
+  public static int COLORWHEEL_SINGLESOLENOID_REVERSECHANNEL = 3;
+ 
+  public static final int LIFT_MOTOR = 10;
+  public static int LEFTLIFT_SINGLESOLENOID_FORWARDCHANNEL = 7;
+  public static int RIGHTLIFT_SINGLESOLENOID_FORWARDCHANNEL = 6;
+  public static int LEFTLIFT_SINGLESOLENOID_REVERSECHANNEL = 5;
+  public static int RIGHTLIFT_SINGLESOLENOID_REVERSECHANNEL = 2;
+  
 }

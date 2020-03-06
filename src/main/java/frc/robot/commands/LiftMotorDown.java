@@ -8,14 +8,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-//import frc.robot.OI;
-import frc.robot.Robot;
-import frc.robot.subsystems.IntakeSub;
+import frc.robot.subsystems.LiftSub;
 
-public class Intake extends Command {
-  public Intake() {
+public class LiftMotorDown extends Command {
+  public LiftMotorDown() {
     // Use requires() here to declare subsystem dependencies
-   requires(IntakeSub.getInstance());
+    // eg. requires(chassis);
+    requires(LiftSub.getInstance());
   }
 
   // Called just before this Command runs the first time
@@ -26,8 +25,7 @@ public class Intake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double output = Robot.oi.operator.LT.get() - Robot.oi.operator.RT.get();
-    IntakeSub.getInstance().setIntakeSpeed(output);
+    LiftSub.getInstance().setSpeed(-1);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -47,3 +45,4 @@ public class Intake extends Command {
   protected void interrupted() {
   }
 }
+

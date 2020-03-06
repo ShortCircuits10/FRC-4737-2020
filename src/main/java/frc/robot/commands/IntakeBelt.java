@@ -25,7 +25,7 @@ public class IntakeBelt extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.INTAKESUB.setIntakeBeltSpeed(Robot.oi.operator.LS.Y.get());
+    IntakeSub.getInstance().setIntakeBeltSpeed(-Robot.oi.operator.LS.Y.get());
   }
 
   // Make this return true when this Command no longer needs to run execute()

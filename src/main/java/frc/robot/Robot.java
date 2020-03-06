@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+//import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -15,8 +16,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.SwerveDrive;
 import frc.robot.subsystems.DrivetrainSub;
 import frc.robot.subsystems.IntakeSub;
+import frc.robot.subsystems.LiftSub;
 import frc.robot.subsystems.ShooterSub;
 import frc.robot.subsystems.ColorWheelSub;
+//import frc.robot.subsystems.LiftSub;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +34,7 @@ public class Robot extends TimedRobot {
   public static ShooterSub SHOOTERSUB;
   public static IntakeSub INTAKESUB;
   public static ColorWheelSub COLORWHEELSUB;
+  public static LiftSub LIFTSUB;
   
   
   private static Robot instance = null;
@@ -60,9 +64,14 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI();
     DRIVETRAINSUB = DrivetrainSub.getInstance();
+    COLORWHEELSUB = ColorWheelSub.getInstance();
+    INTAKESUB = IntakeSub.getInstance();
+    SHOOTERSUB = ShooterSub.getInstance();
+    LIFTSUB = LiftSub.getInstance();
     m_chooser.setDefaultOption("Default Auto", new SwerveDrive());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    //CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
@@ -105,6 +114,9 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
+   
+   //Max create an auton here
+    // Robot.SHOOTERSUB.setSpeed(1);
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -125,6 +137,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    //Robot.SHOOTERSUB.setSpeed(1);
   }
 
   @Override

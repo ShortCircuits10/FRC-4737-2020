@@ -17,6 +17,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 /**
  * Add your docs here.
  */
+
 public class IntakeSub extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
@@ -50,7 +51,6 @@ public void setBallElevatorSpeed(double speed) {
 }
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-     setDefaultCommand(new DisableIntake());
+    setDefaultCommand(new DisableIntake());
   }
 }

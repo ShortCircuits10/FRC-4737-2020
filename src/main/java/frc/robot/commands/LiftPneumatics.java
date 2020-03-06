@@ -8,22 +8,21 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import frc.robot.subsystems.ColorWheelSub;
+import frc.robot.subsystems.LiftSub;
 
 /**
  * Add your docs here.
  */
-public class ColorWheelPneumatics extends InstantCommand {
+public class LiftPneumatics extends InstantCommand {
   /**
    * Add your docs here.
    */
-  
   private boolean extended;
 
-  public ColorWheelPneumatics(boolean extended) {
+  public LiftPneumatics(boolean extended) {
     super();
     // Use requires() here to declare subsystem dependencies
-    requires(ColorWheelSub.getInstance());
+    requires(LiftSub.getInstance());
     
     this.extended = extended;
   }
@@ -33,9 +32,9 @@ public class ColorWheelPneumatics extends InstantCommand {
   protected void initialize() {
 
     if (extended) {
-      ColorWheelSub.getInstance().extendExtender();
+      LiftSub.getInstance().extendExtender();
     } else {
-      ColorWheelSub.getInstance().retractExtender();
+      LiftSub.getInstance().retractExtender();
     
   }
 

@@ -12,10 +12,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
+
 public class LimeSub extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  private static LimeSub instance;
 
+  public static LimeSub getInstance() {
+    if (instance == null) {
+      instance = new LimeSub();
+  }
+
+    return instance;
+  }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

@@ -9,25 +9,31 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.commands.DisableShooter;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 /**
  * Add your docs here.
  */
+
 public class ShooterSub extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private static ShooterSub instance;
-  public WPI_TalonSRX Shooter;
+  public WPI_TalonSRX Shooter_Motor1;
+  public WPI_TalonSRX Shooter_Motor2;
 
   public ShooterSub() {
 
-    Shooter = new WPI_TalonSRX(RobotMap.SHOOTER);
+    Shooter_Motor1 = new WPI_TalonSRX(RobotMap.SHOOTER_MOT0R1);
+    Shooter_Motor2 = new WPI_TalonSRX(RobotMap.SHOOTER_MOT0R2);
   
   }
 
   public void setSpeed (double speed) {
-    Shooter.set(speed);
+    Shooter_Motor1.set(speed);
+    Shooter_Motor2.set(speed);
+
   }
 
 
@@ -42,6 +48,6 @@ public class ShooterSub extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-     setDefaultCommand(new DisableShooter());
+    setDefaultCommand(new DisableShooter());
   }
 }
