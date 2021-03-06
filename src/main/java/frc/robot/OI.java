@@ -15,13 +15,16 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.libs.XboxController;
 import frc.robot.commands.Shooter;
+import frc.robot.commands.ShooterAdjuster;
 import frc.robot.commands.Intake;
 import frc.robot.commands.IntakeBelt;
 import frc.robot.commands.BallElevator;
-import frc.robot.commands.ColorWheelPneumatics;
+import frc.robot.commands.DisableIntake;
+import frc.robot.commands.DisableShooter;
+//import frc.robot.commands.ColorWheelPneumatics;
 //import frc.robot.commands.ColorWheel;
 //import frc.robot.commands.DisableColorWheel;
-import frc.robot.Robot;
+//import frc.robot.Robot;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -85,6 +88,14 @@ public class OI {
         ColorWheelStatus = false;
     }
 */
+
+        new Trigger() {
+          public boolean get() {
+            if (Robot.getInstance() == null)
+              return false;
+            return (driver.RT.get() != 0 || driver.LT.get() != 0);
+          }
+        }.whileActive(new ShooterAdjuster());
 
         new Trigger() {
             public boolean get() {

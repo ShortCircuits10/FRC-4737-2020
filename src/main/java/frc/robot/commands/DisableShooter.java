@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.EncoderSub;
 import frc.robot.subsystems.ShooterSub;
 
 public class DisableShooter extends Command {
@@ -15,6 +16,7 @@ public class DisableShooter extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(ShooterSub.getInstance());
+    requires(EncoderSub.getInstance());
   }
 
   // Called just before this Command runs the first time
@@ -26,6 +28,7 @@ public class DisableShooter extends Command {
   @Override
   protected void execute() {
     ShooterSub.getInstance().setSpeed(0);
+    EncoderSub.getInstance().setEncoderSpeed(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()

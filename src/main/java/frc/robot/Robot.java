@@ -19,6 +19,7 @@ import frc.robot.subsystems.IntakeSub;
 import frc.robot.subsystems.LiftSub;
 import frc.robot.subsystems.ShooterSub;
 import frc.robot.subsystems.ColorWheelSub;
+import frc.robot.subsystems.EncoderSub;
 //import frc.robot.subsystems.LiftSub;
 
 /**
@@ -35,6 +36,7 @@ public class Robot extends TimedRobot {
   public static IntakeSub INTAKESUB;
   public static ColorWheelSub COLORWHEELSUB;
   public static LiftSub LIFTSUB;
+  public static EncoderSub ENCODERSUB;
   
   
   private static Robot instance = null;
@@ -68,6 +70,8 @@ public class Robot extends TimedRobot {
     INTAKESUB = IntakeSub.getInstance();
     SHOOTERSUB = ShooterSub.getInstance();
     LIFTSUB = LiftSub.getInstance();
+    ENCODERSUB = EncoderSub.getInstance();
+    
     m_chooser.setDefaultOption("Default Auto", new SwerveDrive());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
