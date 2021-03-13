@@ -25,7 +25,7 @@ import frc.robot.commands.DisableShooter;
 //import frc.robot.commands.ColorWheel;
 //import frc.robot.commands.DisableColorWheel;
 //import frc.robot.Robot;
-import frc.robot.commands.GetShooterHeight;
+//import frc.robot.commands.GetShooterHeight;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -71,7 +71,7 @@ public class OI {
     operator.A.whenPressed(new Shooter());
     operator.X.whenPressed(new DisableShooter());
     operator.X.whenPressed(new DisableIntake());
-    driver.B.whenPressed(new GetShooterHeight());
+   // driver.B.whenPressed(new GetShooterHeight());
     //operator.A.whenPressed(new ColorWheelPneumatics(true));
     //operator.Y.whenPressed(new ColorWheelPneumatics(false));
     

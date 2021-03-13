@@ -6,14 +6,15 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.DisableShooter;
+import frc.robot.commands.DisableEncoder;
+//import frc.robot.commands.DisableShooter;
 //import frc.robot.commands.Shooter;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.ControlMode;
+//import com.ctre.phoenix.motorcontrol.ControlMode;
 //import com.ctre.phoenix.motorcontrol.*;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+//import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 //import com.ctre.phoenix.motorcontrol.can.*;
 
@@ -24,12 +25,12 @@ public class EncoderSub extends Subsystem {
   public WPI_TalonSRX Shooter_Motor3;
   private static EncoderSub instance;
   public int level = 0;
-  private static final double GetShooterHeight = 0;
+  //private static final double GetShooterHeight = 0;
 
 public EncoderSub(){
     Shooter_Motor3 = new WPI_TalonSRX(RobotMap.SHOOTER_MOT0R3);
 
-    Shooter_Motor3.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    //Shooter_Motor3.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
 
 }
 
@@ -37,13 +38,7 @@ public void setEncoderSpeed (double speed) {
   Shooter_Motor3.set(speed);
 }
 
-public void setRedZoneHeight(double height){
-  Shooter_Motor3.set(ControlMode.Position, height);
 
-}
-public double getHeight() {
-  return GetShooterHeight; // To do when the elevator encoder is added
-}
 
 
 public static EncoderSub getInstance() {
@@ -56,6 +51,6 @@ public static EncoderSub getInstance() {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-     setDefaultCommand(new DisableShooter());
+     setDefaultCommand(new DisableEncoder());
   }
 }
