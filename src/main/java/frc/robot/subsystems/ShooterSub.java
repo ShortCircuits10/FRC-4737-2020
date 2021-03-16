@@ -10,7 +10,16 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DisableShooter;
+import frc.robot.commands.GetAdjusterHeight;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+/*
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.*;
+
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+
+import com.ctre.phoenix.motorcontrol.can.*;
+*/
 //import frc.robot.Robot;
 
 /**
@@ -25,12 +34,17 @@ public class ShooterSub extends Subsystem {
   public WPI_TalonSRX Shooter_Motor2;
   public WPI_TalonSRX Shooter_Motor3;
 
+  private static final double GetAdjusterHeight = 0;
+  public int level = 0;
+
   public ShooterSub() {
 
     Shooter_Motor1 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR1);
     Shooter_Motor2 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR2);
     Shooter_Motor3 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR3);
   }
+
+  int absolutePosition = Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
 
   public void setSpeed (double speed) {
     Shooter_Motor1.set(speed);
@@ -56,5 +70,9 @@ public class ShooterSub extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     setDefaultCommand(new DisableShooter());
+  }
+
+  public double getHeight() {
+    return GetAdjusterHeight; // To do when the elevator encoder is added
   }
 }

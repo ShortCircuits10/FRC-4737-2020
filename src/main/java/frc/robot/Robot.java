@@ -16,9 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.SwerveDrive;
 import frc.robot.subsystems.DrivetrainSub;
 import frc.robot.subsystems.IntakeSub;
-import frc.robot.subsystems.LiftSub;
 import frc.robot.subsystems.ShooterSub;
-import frc.robot.subsystems.ColorWheelSub;
 //import frc.robot.subsystems.LiftSub;
 
 /**
@@ -33,8 +31,7 @@ public class Robot extends TimedRobot {
   public static DrivetrainSub DRIVETRAINSUB;
   public static ShooterSub SHOOTERSUB;
   public static IntakeSub INTAKESUB;
-  public static ColorWheelSub COLORWHEELSUB;
-  public static LiftSub LIFTSUB;
+
   
   
   private static Robot instance = null;
@@ -64,10 +61,9 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI();
     DRIVETRAINSUB = DrivetrainSub.getInstance();
-    COLORWHEELSUB = ColorWheelSub.getInstance();
     INTAKESUB = IntakeSub.getInstance();
     SHOOTERSUB = ShooterSub.getInstance();
-    LIFTSUB = LiftSub.getInstance();
+  
     
     m_chooser.setDefaultOption("Default Auto", new SwerveDrive());
     // chooser.addOption("My Auto", new MyAutoCommand());

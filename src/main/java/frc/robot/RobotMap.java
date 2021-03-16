@@ -39,30 +39,13 @@ public class RobotMap {
   public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 3; // Analog
   public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 5;
 
-  public static final int SHOOTER_MOTOR1 = 10;
-  public static final int SHOOTER_MOTOR2 = 16;
+  public static final int SHOOTER_MOTOR1 = 16;
+  public static final int SHOOTER_MOTOR2 = 10;
   public static final int SHOOTER_MOTOR3 = 13;
   public static final int INTAKE_MOTOR1 = 14;
   public static final int INTAKE_MOTOR2 = 12;
   public static final int INTAKE_MOTOR3 = 23;
 
-  
-
-
-
-
-
-
-
-
-  public static final int COLOR_WHEEL_MOTOR = 14;
-  public static int COLORWHEEL_SINGLESOLENOID_FORWARDCHANNEL = 4;
-  public static int COLORWHEEL_SINGLESOLENOID_REVERSECHANNEL = 3;
  
-  public static final int LIFT_MOTOR = 10;
-  public static int LEFTLIFT_SINGLESOLENOID_FORWARDCHANNEL = 7;
-  public static int RIGHTLIFT_SINGLESOLENOID_FORWARDCHANNEL = 6;
-  public static int LEFTLIFT_SINGLESOLENOID_REVERSECHANNEL = 5;
-  public static int RIGHTLIFT_SINGLESOLENOID_REVERSECHANNEL = 2;
   
 }
