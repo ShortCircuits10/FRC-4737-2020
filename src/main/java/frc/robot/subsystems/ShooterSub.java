@@ -23,19 +23,25 @@ public class ShooterSub extends Subsystem {
   private static ShooterSub instance;
   public WPI_TalonSRX Shooter_Motor1;
   public WPI_TalonSRX Shooter_Motor2;
+  public WPI_TalonSRX Shooter_Motor3;
 
   public ShooterSub() {
 
-    Shooter_Motor1 = new WPI_TalonSRX(RobotMap.SHOOTER_MOT0R1);
-    Shooter_Motor2 = new WPI_TalonSRX(RobotMap.SHOOTER_MOT0R2);
-  
+    Shooter_Motor1 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR1);
+    Shooter_Motor2 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR2);
+    Shooter_Motor3 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR3);
   }
 
   public void setSpeed (double speed) {
     Shooter_Motor1.set(speed);
     Shooter_Motor2.set(speed);
-
   }
+
+  public void setAdjusterSpeed (double speed) {
+    Shooter_Motor3.set(speed);
+  }
+
+
 
 
   public static ShooterSub getInstance() {

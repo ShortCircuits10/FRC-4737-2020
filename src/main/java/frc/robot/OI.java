@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.libs.XboxController;
 import frc.robot.commands.Shooter;
 import frc.robot.commands.ShooterAdjuster;
+import frc.robot.commands.ReverseShooterAdjuster;
 import frc.robot.commands.Intake;
 import frc.robot.commands.IntakeBelt;
 import frc.robot.commands.BallElevator;
@@ -71,6 +72,8 @@ public class OI {
     operator.A.whenPressed(new Shooter());
     operator.X.whenPressed(new DisableShooter());
     operator.X.whenPressed(new DisableIntake());
+    operator.B.whileHeld(new ShooterAdjuster());
+    operator.Y.whileHeld(new ReverseShooterAdjuster());
    // driver.B.whenPressed(new GetShooterHeight());
     //operator.A.whenPressed(new ColorWheelPneumatics(true));
     //operator.Y.whenPressed(new ColorWheelPneumatics(false));
@@ -91,13 +94,7 @@ public class OI {
     }
 */
 
-        new Trigger() {
-          public boolean get() {
-            if (Robot.getInstance() == null)
-              return false;
-            return (driver.RT.get() != 0 || driver.LT.get() != 0);
-          }
-        }.whileActive(new ShooterAdjuster());
+     
 
         new Trigger() {
             public boolean get() {
@@ -124,7 +121,15 @@ public class OI {
               return (operator.RT.get() != 0 || operator.LT.get() != 0);
             }
           }.whileActive(new Intake());
-
+/*
+          new Trigger() {
+            public boolean get() {
+              if (Robot.getInstance() == null)
+                return false;
+              return (driver.RT.get() != 0 || driver.LT.get() != 0);
+            }
+          }.whileActive(new ShooterAdjuster());
+*/
         
 
 
