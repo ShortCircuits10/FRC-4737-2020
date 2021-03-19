@@ -5,6 +5,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RobotMap;
 import frc.robot.subsystems.ShooterSub;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -19,12 +21,15 @@ public class GetAdjusterHeight extends InstantCommand {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(ShooterSub.getInstance());
+    Shooter_Motor3 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR3);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
     CurrentHeight = Shooter_Motor3.getSelectedSensorPosition();
-    System.out.print(CurrentHeight);
+    System.out.println(CurrentHeight);
+    SmartDashboard.putNumber("Encoder", CurrentHeight);
+    //System.out.println(adjusterEncoder);
   }
 }
