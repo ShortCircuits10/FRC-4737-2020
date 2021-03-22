@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.ShooterSub;
+import frc.robot.subsystems.AdjustShootersub;
 
 public class DisableShooter extends Command {
   public DisableShooter() {
@@ -26,7 +27,7 @@ public class DisableShooter extends Command {
   @Override
   protected void execute() {
     ShooterSub.getInstance().setSpeed(0);
-    ShooterSub.getInstance().setAdjusterSpeed(0);
+    AdjustShootersub.getInstance().setAdjusterSpeed(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()

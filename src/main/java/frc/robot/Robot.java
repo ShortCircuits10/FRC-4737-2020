@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.SwerveDrive;
+import frc.robot.subsystems.AdjustShootersub;
 import frc.robot.subsystems.DrivetrainSub;
 import frc.robot.subsystems.IntakeSub;
 import frc.robot.subsystems.ShooterSub;
@@ -31,6 +32,7 @@ public class Robot extends TimedRobot {
   public static DrivetrainSub DRIVETRAINSUB;
   public static ShooterSub SHOOTERSUB;
   public static IntakeSub INTAKESUB;
+  public static AdjustShootersub ADJUSTERSHOOTERSUB;
 
   
   
@@ -63,6 +65,7 @@ public class Robot extends TimedRobot {
     DRIVETRAINSUB = DrivetrainSub.getInstance();
     INTAKESUB = IntakeSub.getInstance();
     SHOOTERSUB = ShooterSub.getInstance();
+    ADJUSTERSHOOTERSUB = AdjustShootersub.getInstance();
   
     
     m_chooser.setDefaultOption("Default Auto", new SwerveDrive());
