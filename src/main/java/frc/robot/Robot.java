@@ -17,6 +17,8 @@ import frc.robot.commands.SwerveDrive;
 import frc.robot.subsystems.DrivetrainSub;
 import frc.robot.subsystems.IntakeSub;
 import frc.robot.subsystems.ShooterSub;
+import frc.robot.subsystems.ShooterAdjusterSub;
+//import edu.wpi.first.wpilibj.Encoder;
 //import frc.robot.subsystems.LiftSub;
 
 /**
@@ -30,7 +32,10 @@ public class Robot extends TimedRobot {
   
   public static DrivetrainSub DRIVETRAINSUB;
   public static ShooterSub SHOOTERSUB;
+  public static ShooterAdjusterSub SHOOTERADJUSTERSUB;
   public static IntakeSub INTAKESUB;
+
+
 
   
   
@@ -63,6 +68,7 @@ public class Robot extends TimedRobot {
     DRIVETRAINSUB = DrivetrainSub.getInstance();
     INTAKESUB = IntakeSub.getInstance();
     SHOOTERSUB = ShooterSub.getInstance();
+    SHOOTERADJUSTERSUB = ShooterAdjusterSub.getInstance();
   
     
     m_chooser.setDefaultOption("Default Auto", new SwerveDrive());

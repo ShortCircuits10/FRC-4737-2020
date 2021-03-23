@@ -7,8 +7,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.ShooterAdjusterSub;
 
-public class ShooterAdjuster extends Command {
-  public ShooterAdjuster() {
+public class DisableShooterAdjuster extends Command {
+  public DisableShooterAdjuster() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(ShooterAdjusterSub.getInstance());
@@ -21,7 +21,7 @@ public class ShooterAdjuster extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    ShooterAdjusterSub.getInstance().setAdjusterSpeed(.25);
+    ShooterAdjusterSub.getInstance().setAdjusterSpeed(0);
     //double speed = Robot.oi.operator.LT.get() - Robot.oi.operator.RT.get();
     //EncoderSub.getInstance().setEncoderSpeed(speed);
   }

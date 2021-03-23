@@ -7,9 +7,11 @@
 
 package frc.robot.subsystems;
 
+//import edu.wpi.first.hal.sim.EncoderSim;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.DisableShooter;
+import frc.robot.commands.DisableShooterAdjuster;
 //import frc.robot.commands.GetAdjusterHeight;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 /*
@@ -26,30 +28,44 @@ import com.ctre.phoenix.motorcontrol.can.*;
  * Add your docs here.
  */
 
-public class ShooterSub extends Subsystem {
+public class ShooterAdjusterSub extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private static ShooterSub instance;
-  public WPI_TalonSRX Shooter_Motor1;
-  public WPI_TalonSRX Shooter_Motor2;
-  //public int level = 0;
+  private static ShooterAdjusterSub instance;
+  public WPI_TalonSRX Shooter_Motor3;
+  public static Encoder EncoderMotor;
+  public int shooterMotor3Encoder = 13;
 
-  public ShooterSub() {
 
-    Shooter_Motor1 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR1);
-    Shooter_Motor2 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR2);
+  //Encoder enc;
+// public int level = 0;
+
+public ShooterAdjusterSub() {
+  Shooter_Motor3 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR3);
+  //EncoderMotor = Encoder(RobotMap.SHOOTER_MOTOR3_ENCODER);
+}
+
+// int absolutePosition =
+// Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
+
+
+public void setHeight(double DistancePerPulse) {
+  EncoderMotor.setDistancePerPulse(DistancePerPulse);
+}
+
+
+public void setAdjusterSpeed(double speed) {
+  Shooter_Motor3.set(speed);
+  //GetAdjusterHeight = GetAdjusterHeight + 1.0;
   }
 
- // int absolutePosition = Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
 
-  public void setSpeed (double speed) {
-    Shooter_Motor1.set(speed);
-    Shooter_Motor2.set(speed);
-  }
 
-  public static ShooterSub getInstance() {
+
+
+  public static ShooterAdjusterSub getInstance() {
     if (instance == null) {
-        instance = new ShooterSub();
+        instance = new ShooterAdjusterSub();
     }
 
     return instance;
@@ -58,7 +74,7 @@ public class ShooterSub extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new DisableShooter());
+    setDefaultCommand(new DisableShooterAdjuster());
   }
 
 
