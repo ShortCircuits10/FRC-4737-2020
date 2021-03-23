@@ -4,29 +4,39 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.robot.RobotMap;
 import frc.robot.subsystems.AdjustShootersub;
-import edu.wpi.first.hal.sim.EncoderSim;
+//import edu.wpi.first.hal.sim.EncoderSim;
 
 
 /** Add your docs here. */
 public class GetAdjusterHeight extends InstantCommand {
   /** Add your docs here. */
-  public int CurrentHeight;
-  public static EncoderSim EncoderMotor;
+  public double CurrentHeight;
+  public static Encoder EncoderMotor;
+  
 
   public GetAdjusterHeight() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(AdjustShootersub.getInstance());
-    EncoderMotor = new EncoderSim(13);
+    EncoderMotor = Encoder(RobotMap.SHOOTER_MOTOR3);
+  }
+
+ 
+
+
+  private Encoder Encoder(int shooterMotor3) {
+    return EncoderMotor;
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    CurrentHeight = EncoderMotor.getCount();
+    CurrentHeight = EncoderMotor.getDistance();
     System.out.println(CurrentHeight);
   }
 }
