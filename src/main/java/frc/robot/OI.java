@@ -19,6 +19,7 @@ import frc.robot.commands.ShooterAdjuster;
 import frc.robot.commands.ReverseShooterAdjuster;
 import frc.robot.commands.Intake;
 import frc.robot.commands.IntakeBelt;
+import frc.robot.commands.ResetEncoder;
 import frc.robot.commands.BallElevator;
 import frc.robot.commands.DisableIntake;
 import frc.robot.commands.DisableShooter;
@@ -75,27 +76,8 @@ public class OI {
     operator.X.whenPressed(new DisableIntake());
     operator.B.whileHeld(new ShooterAdjuster());
     operator.Y.whileHeld(new ReverseShooterAdjuster());
-    //operator.RB.whenPressed(new GetAdjusterHeight());
-    //driver.B.whenPressed(new Text());
-   // driver.B.whenPressed(new GetShooterHeight());
-    //operator.A.whenPressed(new ColorWheelPneumatics(true));
-    //operator.Y.whenPressed(new ColorWheelPneumatics(false));
+    operator.RB.whenPressed(new ResetEncoder());
     
-    /*  
-    if (ColorWheelPneumaticsStatus == false) {
-        operator.A.whenPressed(new ColorWheelPneumatics(true));
-    }  else if (ColorWheelPneumaticsStatus == true) {
-        operator.A.whenPressed(new ColorWheelPneumatics(false));
-    }
-*/
-  /*  if (ColorWheelStatus == false) {
-        operator.X.toggleWhenPressed(new ColorWheel());
-        ColorWheelStatus = true;
-    }  else if (ColorWheelStatus == true) {
-        operator.X.toggleWhenPressed(new DisableColorWheel());
-        ColorWheelStatus = false;
-    }
-*/
 
      
 

@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.SwerveDrive;
 import frc.robot.subsystems.DrivetrainSub;
+import frc.robot.subsystems.EncoderSub;
 import frc.robot.subsystems.IntakeSub;
 import frc.robot.subsystems.ShooterSub;
 import frc.robot.subsystems.ShooterAdjusterSub;
@@ -34,6 +35,8 @@ public class Robot extends TimedRobot {
   public static ShooterSub SHOOTERSUB;
   public static ShooterAdjusterSub SHOOTERADJUSTERSUB;
   public static IntakeSub INTAKESUB;
+  public static EncoderSub ENCODERSUB;
+
 
 
 
