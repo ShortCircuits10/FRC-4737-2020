@@ -4,16 +4,11 @@
 
 package frc.robot.commands;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.ShooterAdjusterSub;
 
-public class GetAdjusterHeight extends Command {
-  public int currentHeight;
-  public WPI_TalonSRX Shooter_Motor3;
-
-  public GetAdjusterHeight() {
+public class SetRedZoneHeight extends Command {
+  public SetRedZoneHeight() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(ShooterAdjusterSub.getInstance());
@@ -26,8 +21,8 @@ public class GetAdjusterHeight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      currentHeight = Shooter_Motor3.getSelectedSensorPosition();
-      System.out.println(currentHeight);
+    ShooterAdjusterSub.getInstance().setDistance();
+    System.out.println("Hi");
   }
 
   // Make this return true when this Command no longer needs to run execute()
