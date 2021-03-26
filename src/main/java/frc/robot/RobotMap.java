@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Encoder;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -44,12 +44,10 @@ public class RobotMap {
   public static final int SHOOTER_MOTOR1 = 16;
   public static final int SHOOTER_MOTOR2 = 10;
   public static final int SHOOTER_MOTOR3 = 13;
-  public static final int SHOOTER_MOTOR3_ENCODER = 13;
   public static final int INTAKE_MOTOR1 = 14;
   public static final int INTAKE_MOTOR2 = 12;
   public static final int INTAKE_MOTOR3 = 23;
 
-  public static final int SHOOTER_MOTOR3_INTAKE = 4;
 
  
   
