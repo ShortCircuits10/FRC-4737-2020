@@ -7,13 +7,15 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.SwerveDrive;
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.RobotMap;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,7 +26,11 @@ import frc.robot.subsystems.Drivetrain;
  */
 public class Robot extends TimedRobot {
   
-  public static Drivetrain drivetrain;
+
+  public WPI_TalonSRX leftMotor1;
+  public WPI_TalonSRX leftMotor2;
+  public WPI_TalonSRX rightMotor1;
+  public WPI_TalonSRX rightMotor2;
   
   public static OI oi;
 
@@ -41,10 +47,12 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
-    drivetrain = Drivetrain.getInstance();
-    m_chooser.setDefaultOption("Default Auto", new SwerveDrive());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    leftMotor1 = new WPI_TalonSRX(RobotMap.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR);
+    leftMotor2 = new WPI_TalonSRX(RobotMap.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR);
+    rightMotor1 = new WPI_TalonSRX(RobotMap.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR);
+    rightMotor2 = new WPI_TalonSRX(RobotMap.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR);
   }
 
   /**
@@ -84,9 +92,11 @@ public class Robot extends TimedRobot {
    * chooser code above (like the commented example) or additional comparisons
    * to the switch structure below with additional strings & commands.
    */
+  public double startTime = 0;
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    //m_autonomousCommand = m_chooser.getSelected();
+    startTime = Timer.getFPGATimestamp();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -96,9 +106,10 @@ public class Robot extends TimedRobot {
      */
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
+    /*if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
     }
+    */
   }
 
   /**
@@ -106,7 +117,20 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
+    //Scheduler.getInstance().run();
+    double time = Timer.getFPGATimestamp();
+    if(time-startTime<3){
+      leftMotor1.set(.6);
+      leftMotor2.set(.6);
+      rightMotor1.set(-.6);
+      rightMotor2.set(-.6);
+    }
+    else{
+      leftMotor1.set(0);
+      leftMotor2.set(0);
+      rightMotor1.set(0);
+      rightMotor2.set(0);
+    }
   }
 
   @Override

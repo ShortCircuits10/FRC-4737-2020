@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import frc.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.InstantCommand;
@@ -44,16 +44,5 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  private final Joystick primaryJoystick = new Joystick(0);
 
-    public OI() {
-        // Back button zeroes the drivetrain
-        new JoystickButton(primaryJoystick, 7).whenPressed(
-                new InstantCommand(() -> Drivetrain.getInstance().resetGyroscope())
-        );
-    }
-
-    public Joystick getPrimaryJoystick() {
-        return primaryJoystick;
-    }
 }
