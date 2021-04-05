@@ -17,8 +17,11 @@ import frc.libs.XboxController;
 import frc.robot.commands.Shooter;
 import frc.robot.commands.ShooterAdjuster;
 import frc.robot.commands.ReverseShooterAdjuster;
+import frc.robot.commands.SetHeight;
+import frc.robot.commands.SetRedZone;
 import frc.robot.commands.Intake;
 import frc.robot.commands.IntakeBelt;
+import frc.robot.commands.ResetEncoder;
 import frc.robot.commands.BallElevator;
 import frc.robot.commands.DisableIntake;
 import frc.robot.commands.DisableShooter;
@@ -78,6 +81,9 @@ public class OI {
     operator.Y.whileHeld(new ReverseShooterAdjuster());
     operator.RB.whenPressed(new GetAdjusterHeight());
     operator.LB.whenPressed(new GetHeight());
+    operator.DPAD.UP.whenPressed(new SetHeight());
+    operator.DPAD.DOWN_LEFT.whenPressed(new SetRedZone());
+    operator.RB.whenPressed(new ResetEncoder());
  
 
      

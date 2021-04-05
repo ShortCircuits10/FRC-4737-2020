@@ -10,17 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DisableShooter;
-//import frc.robot.commands.GetAdjusterHeight;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-/*
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.*;
-
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-
-import com.ctre.phoenix.motorcontrol.can.*;
-*/
-//import frc.robot.Robot;
 
 /**
  * Add your docs here.
@@ -32,7 +22,7 @@ public class ShooterSub extends Subsystem {
   private static ShooterSub instance;
   public WPI_TalonSRX Shooter_Motor1;
   public WPI_TalonSRX Shooter_Motor2;
-  //public int level = 0;
+ 
 
   public ShooterSub() {
 
@@ -40,7 +30,7 @@ public class ShooterSub extends Subsystem {
     Shooter_Motor2 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR2);
   }
 
- // int absolutePosition = Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
+
 
   public void setSpeed (double speed) {
     Shooter_Motor1.set(speed);

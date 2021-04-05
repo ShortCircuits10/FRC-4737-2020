@@ -12,6 +12,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DisableShooterAdjuster;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -38,6 +40,7 @@ public ShooterAdjusterSub() {
   Shooter_Motor3.setSensorPhase(false);// Set this to true if we get negatie values
   
  // double currentHeight = Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
+// double currentHeight = Shooter_Motor3.getSelectedSensorPosition();
 
 }
 
@@ -51,11 +54,21 @@ public void setAdjusterSpeed(double speed) {
   } */
 
   public void getHeight(){
-      Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
+      //Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
+      Shooter_Motor3.getSelectedSensorPosition();
   }
 
+  public void setRedDistance(int distance){
+   Shooter_Motor3.setSelectedSensorPosition(distance); 
+  }
 
+  public void setDistance(double height){
+    Shooter_Motor3.set(ControlMode.Position, height);
+  }
 
+  public void resetEncoder(){
+    Shooter_Motor3.setSelectedSensorPosition(0);
+  }
 
   public static ShooterAdjusterSub getInstance() {
     if (instance == null) {
