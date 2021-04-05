@@ -48,6 +48,8 @@ public class RobotMap {
   public static final int INTAKE_MOTOR2 = 12;
   public static final int INTAKE_MOTOR3 = 23;
 
+  public static final int j = 45;
+
 
  
   
