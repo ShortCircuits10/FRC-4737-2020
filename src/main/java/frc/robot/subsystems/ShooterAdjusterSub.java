@@ -8,11 +8,11 @@
 package frc.robot.subsystems;
 
 //import edu.wpi.first.hal.sim.EncoderSim;
-import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DisableShooterAdjuster;
-import frc.robot.commands.Shooter;
+//import frc.robot.commands.Shooter;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -55,16 +55,16 @@ public void setAdjusterSpeed(double speed) {
 
   public void getHeight(){
       
-    double currentHeight = Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
+  double currentHeight = Shooter_Motor3.getSelectedSensorPosition();
     System.out.print(currentHeight);
   }
 
   public void reset(){
-    Shooter_Motor3.getSensorCollection().setQuadraturePosition(0, 50000);
+    Shooter_Motor3.setSelectedSensorPosition(0, 0, 10);
   }
 
-  public void setDistance() { 
-    Shooter_Motor3.getSensorCollection().setPulseWidthPosition(0, 10);
+  public void setDistance(int height) { 
+    Shooter_Motor3.set(ControlMode.Position, height);
   
   }
 
