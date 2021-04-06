@@ -12,7 +12,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.DisableShooterAdjuster;
+import frc.robot.commands.SetHeight;
 
+import com.ctre.phoenix.ParamEnum;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -38,6 +40,8 @@ public ShooterAdjusterSub() {
   Shooter_Motor3 = new WPI_TalonSRX(RobotMap.SHOOTER_MOTOR3);
   Shooter_Motor3.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
   Shooter_Motor3.setSensorPhase(false);// Set this to true if we get negatie values
+
+  Shooter_Motor3.configAllowableClosedloopError(0, 4096 * 4, 50);
   
  // double currentHeight = Shooter_Motor3.getSensorCollection().getPulseWidthPosition();
 // double currentHeight = Shooter_Motor3.getSelectedSensorPosition();
@@ -58,13 +62,14 @@ public void setAdjusterSpeed(double speed) {
       Shooter_Motor3.getSelectedSensorPosition();
   }
 
-  public void setRedDistance(int distance){
-   Shooter_Motor3.setSelectedSensorPosition(distance); 
+  public void setRedDistance(){
+   Shooter_Motor3.configAllowableClosedloopError(0, 4096 * 2);
   }
 
-  public void setDistance(double height){
-    Shooter_Motor3.set(ControlMode.Position, height);
+  public void setDistance(){
+    Shooter_Motor3.configSetParameter(ParamEnum.eClearPositionOnLimitF, 4096, 0, 0, 10);
   }
+
 
   public void resetEncoder(){
     Shooter_Motor3.setSelectedSensorPosition(0);

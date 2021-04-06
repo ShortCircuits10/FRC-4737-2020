@@ -21,7 +21,7 @@ public class SetRedZone extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    ShooterAdjusterSub.getInstance().setRedDistance(4096 * 5);
+    ShooterAdjusterSub.getInstance().setRedDistance();
   }
 
   // Make this return true when this Command no longer needs to run execute()

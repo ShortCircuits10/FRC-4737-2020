@@ -21,7 +21,7 @@ public class SetHeight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    ShooterAdjusterSub.getInstance().setDistance(4096 * 5);
+    ShooterAdjusterSub.getInstance().setDistance();
   }
 
   // Make this return true when this Command no longer needs to run execute()

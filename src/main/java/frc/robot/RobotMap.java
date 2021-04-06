@@ -48,6 +48,11 @@ public class RobotMap {
   public static final int INTAKE_MOTOR2 = 12;
   public static final int INTAKE_MOTOR3 = 23;
 
+  // Fun constant
+  public static final double[] HEIGHT = new double[] {
+    4094 * 4
+  };
+
 
 
 
